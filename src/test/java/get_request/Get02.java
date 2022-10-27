@@ -1,3 +1,5 @@
+package get_request;
+
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -44,6 +46,7 @@ public class Get02 {
         assertFalse(response.asString().contains("TechProEd"));
         // Server'in Cowboy olup olmadigini test ediyoruz
         assertEquals("Cowboy",response.getHeader("Server"));
+
 
     }
 
