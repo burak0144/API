@@ -1,10 +1,12 @@
 package get_request;
 
 import base_url.JsonplaceholderBaseUrl;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class Get03 extends JsonplaceholderBaseUrl {
 
@@ -39,7 +41,18 @@ public class Get03 extends JsonplaceholderBaseUrl {
         Response response=given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
+        // 4. Do Assertion
+        //1.Yol (Hard Assert)
+        response.then().assertThat().statusCode(200).contentType("application/json")
+                .body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velitx")).//hard assert oldugu icin burda durur
+                body("completed",equalTo(false)).
+                body("userId",equalTo(2));
 
+        //2.yol
+        response.then().assertThat().statusCode(200).contentType(ContentType.JSON).
+                body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velitx"),
+                        "completed",equalTo(false),"userId",equalTo(2));
+                //ayni body icersinde test yapildiginda softassert olurve test devam eder,sadee body icersinde gecerlidir
 
 
 
