@@ -87,6 +87,7 @@ public class Get06 extends RestfulBaseUrl {
 
         // 2. Yol : Jsonpath class'nın kullanimi
         JsonPath json = response.jsonPath();
+       // JsonPath json = new JsonPath(response.asString());
 
         assertEquals("Bradley", json.getString("firstname"));
         assertEquals("Pearson", json.getString("lastname"));
@@ -95,6 +96,7 @@ public class Get06 extends RestfulBaseUrl {
         assertEquals("2022-10-27", json.getString("bookingdates.checkin"));
         assertEquals("2022-11-07", json.getString("bookingdates.checkout"));
         assertEquals("None", json.getString("additionalneeds"));
+
 
 
         // 3. Yol : SoftAssert
