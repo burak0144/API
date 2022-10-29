@@ -24,7 +24,7 @@ public class Get05 extends RestfulBaseUrl {
     public void get01(){
         // https://restful-booker.herokuapp.com/booking?firstname=Ali&lastname=Cengiz
         // 1. Set The URL
-        spec.pathParam("first","booking").queryParams("firstname","Ali","lastname","Cengiz");
+        spec.pathParam("first","booking").queryParams("firstname","Kimie","lastname","Jackie");
 
         // 2. Set The Expected Data
 
