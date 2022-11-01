@@ -1,4 +1,4 @@
-package get_requests;
+package get_request;
 
 import base_url.RestfulBaseUrl;
 
