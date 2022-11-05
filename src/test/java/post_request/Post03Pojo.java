@@ -7,6 +7,7 @@ import org.junit.Test;
 import pojos.JsonPlaceholderPojo;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post03Pojo extends JsonplaceholderBaseUrl {
     /*
@@ -46,5 +47,10 @@ public class Post03Pojo extends JsonplaceholderBaseUrl {
         //Do Assertion
         JsonPlaceholderPojo actualData=response.as(JsonPlaceholderPojo.class);
         System.out.println("actualData = " + actualData);
+        
+        assertEquals(201,response.getStatusCode());
+        assertEquals(expectedData.getUserId(),actualData.getUserId());
+        assertEquals(expectedData.getTitle(),actualData.getTitle());
+        assertEquals(expectedData.getCompleted(),actualData.getCompleted());
     }
 }
