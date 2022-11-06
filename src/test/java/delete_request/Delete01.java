@@ -43,4 +43,5 @@ public class Delete01 extends JsonplaceholderBaseUrl {
       //3.yol
       assertEquals(0,actualData.size());
     }
+
 }
