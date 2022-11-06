@@ -55,12 +55,13 @@ public class Post02 extends RestfulBaseUrl {
         RestfulTestData obj= new RestfulTestData();
         Map<String,String> expectedBookingDatas=obj.expectedDataBookingdatesMethod("2021-09-09","2021-09-21");
         Map<String,Object> expectedDataAll=obj.expectedDataAllMethod("John","Doe",11111,true,expectedBookingDatas);
-
+        System.out.println("expectedDataAll = " + expectedDataAll);
 
         // 3. Send The Request And Get The Response
         Response response=given().spec(spec).contentType(ContentType.JSON).body(expectedDataAll).when().post("/{first}");
         Map<String,Object>actualData=response.as(HashMap.class);
-        System.out.println(actualData);
+        System.out.println("actualData = " + actualData);
+
         // 4. Do Assertion
         assertEquals(expectedDataAll.get("firstname"),((Map)actualData.get("booking")).get("firstname"));
         assertEquals(expectedDataAll.get("lastname"),((Map)actualData.get("booking")).get("lastname"));
