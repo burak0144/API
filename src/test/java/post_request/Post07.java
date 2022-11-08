@@ -77,13 +77,19 @@ public class Post07 extends DummyRestApiBaseUrl {
     public void post07() {
      spec.pathParams("first","create");
         DummyRestApiDataPojo dataPojo=new DummyRestApiDataPojo("Tom Hanks",111111,23,"Perfect image");
-       // DummyRestApiPojo expectedData=new DummyRestApiPojo("success",dataPojo,"Successfully! Record has been added.");
+        DummyRestApiPojo expectedData=new DummyRestApiPojo("success",dataPojo,"Successfully! Record has been added.");
         System.out.println("expectedData = " + dataPojo);
         Response response=given().spec(spec).contentType(ContentType.JSON).body(dataPojo).when().post("/{first}");
         DummyRestApiPojo actualData=ObjectMapperUtils.convertJsonToJava(response.asString(),DummyRestApiPojo.class);
         System.out.println("actualData = " + actualData);
-        assertEquals(200,response.statusCode());
+       // assertEquals(200,response.statusCode());
         assertEquals(dataPojo.getEmployee_name(),actualData.getData().getEmployee_name());
+        assertEquals(dataPojo.getEmployee_salarty(),actualData.getData().getEmployee_salarty());
+        assertEquals(dataPojo.getEmployee_age(),actualData.getData().getEmployee_age());
+        assertEquals(dataPojo.getProfile_image(),actualData.getData().getProfile_image());
+
+      //  assertEquals(expectedData.getStatus(),actualData.getStatus());
+        assertEquals(expectedData.getMessage(),actualData.getMessage());
 
     }
 }
