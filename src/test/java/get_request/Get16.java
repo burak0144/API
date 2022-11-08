@@ -3,6 +3,7 @@ package get_request;
 import base_url.RestfulBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.testng.asserts.SoftAssert;
 import pojos.BookingDatesPojo;
 import pojos.BookingPojo;
 import utils.ObjectMapperUtils;
@@ -47,6 +48,7 @@ public class Get16 extends RestfulBaseUrl {
         //Do Assertion
         BookingPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(),BookingPojo.class);
 
+        //hard assertion
         assertEquals(200,response.statusCode());
         assertEquals(expectedData.getFirstname(), actualData.getFirstname());
         assertEquals(expectedData.getLastname(), actualData.getLastname());
@@ -56,8 +58,18 @@ public class Get16 extends RestfulBaseUrl {
         assertEquals(bookingDatesPojo.getCheckin(),actualData.getBookingdates().getCheckin());
         assertEquals(bookingDatesPojo.getCheckout(),actualData.getBookingdates().getCheckout());
 
+       //soft Assertion
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(200,response.statusCode());
+        softAssert.assertEquals(actualData.getFirstname(),expectedData.getFirstname());
+        softAssert.assertEquals(actualData.getLastname(),expectedData.getLastname());
+        softAssert.assertEquals(actualData.getTotalprice(),expectedData.getTotalprice());
+        softAssert.assertEquals(actualData.getTotalprice(),expectedData.getTotalprice());
 
+        softAssert.assertEquals(actualData.getBookingdates().getCheckin(),bookingDatesPojo.getCheckin());
+        softAssert.assertEquals(actualData.getBookingdates().getCheckout(),bookingDatesPojo.getCheckout());
 
+        softAssert.assertAll();
 
     }
 
