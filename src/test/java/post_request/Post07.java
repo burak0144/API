@@ -84,7 +84,7 @@ public class Post07 extends DummyRestApiBaseUrl {
         System.out.println("actualData = " + actualData);
        // assertEquals(200,response.statusCode());
         assertEquals(dataPojo.getEmployee_name(),actualData.getData().getEmployee_name());
-        assertEquals(dataPojo.getEmployee_salarty(),actualData.getData().getEmployee_salarty());
+        assertEquals(dataPojo.getEmployee_salary(),actualData.getData().getEmployee_salary());
         assertEquals(dataPojo.getEmployee_age(),actualData.getData().getEmployee_age());
         assertEquals(dataPojo.getProfile_image(),actualData.getData().getProfile_image());
 
