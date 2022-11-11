@@ -42,7 +42,7 @@ public class Get18 extends DummyRestApiBaseUrl {
         System.out.println("actualData = " + actualData);
         assertEquals(200,response.getStatusCode());
         assertEquals(dummyRestApiDataPojo.getEmployee_name(),actualData.getData().getEmployee_name());
-       assertEquals(dummyRestApiDataPojo.getEmployee_salary(),actualData.getData().getEmployee_salary());
+        assertEquals(dummyRestApiDataPojo.getEmployee_salary(),actualData.getData().getEmployee_salary());
         assertEquals(dummyRestApiDataPojo.getEmployee_age(),actualData.getData().getEmployee_age());
         assertEquals(dummyRestApiDataPojo.getProfile_image(),actualData.getData().getProfile_image());
         assertEquals(expectedData.getStatus(),actualData.getStatus());
